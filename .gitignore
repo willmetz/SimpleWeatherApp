@@ -1,6 +1,7 @@
 # Built application files
 *.apk
 *.ap_
+*.idea
 
 # Files for the Dalvik VM
 *.dex
@@ -25,3 +26,6 @@ proguard/
 
 # Log Files
 *.log
+
+#api key file, not good to make public
+APIKeyDontCommit.java

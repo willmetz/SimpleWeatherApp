@@ -18,6 +18,9 @@ import retrofit.converter.GsonConverter;
 )
 public class WeatherUndergroundAPI
 {
+    private static final String BASE_URL = "http://api.wunderground.com/api/" + APIKeyDontCommit.API_KEY + "/";
+
+
     @Provides
     WeatherUndergroundService weatherUndergroundService()
     {
@@ -26,7 +29,7 @@ public class WeatherUndergroundAPI
 
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://api.wunderground.com/api/d2b8132746efb3c6/")
+                .setEndpoint(BASE_URL)
                 .setConverter(new GsonConverter(gson))
                 .build();
 

@@ -1,4 +1,6 @@
-package com.example.willmetz.simpleweatherapp;
+package com.example.willmetz.weatherapi;
+
+import com.example.willmetz.simpleweatherapp.Forecast;
 
 import java.util.List;
 

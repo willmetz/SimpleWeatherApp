@@ -1,5 +1,7 @@
-package com.example.willmetz.simpleweatherapp;
+package com.example.willmetz.weatherapi;
 
+import com.example.willmetz.simpleweatherapp.APIKeyDontCommit;
+import com.example.willmetz.simpleweatherapp.WeatherListActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

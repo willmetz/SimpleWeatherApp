@@ -2,8 +2,7 @@ package com.example.willmetz.simpleweatherapp;
 
 import android.app.Application;
 
-import java.util.Arrays;
-import java.util.List;
+import com.example.willmetz.weatherapi.WeatherUndergroundAPI;
 
 import dagger.ObjectGraph;
 

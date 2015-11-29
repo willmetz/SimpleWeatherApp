@@ -38,6 +38,8 @@ dependencies {
 
     compile 'com.jakewharton:butterknife:7.0.1'
 
+    compile 'com.android.support:recyclerview-v7:22.0.+'
+
     // Needed for @Generated annotation (missing in Java <= 1.6; therefore, Android)
     compile 'javax.annotation:jsr250-api:1.0'
 }

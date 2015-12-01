@@ -10,6 +10,7 @@ import com.example.willmetz.simpleweatherapp.WeatherSelectionInterface;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.OnTextChanged;
 
 /**
@@ -54,22 +55,13 @@ public class WeatherHeader extends RelativeLayout
         ButterKnife.bind(this);
     }
 
-
-    @OnTextChanged( R.id.cityInput )
-    void onCityChanged( CharSequence city )
+    @OnClick( R.id.get_forecast )
+    void onGetForecast()
     {
         if( listener != null )
         {
-            listener.locationChanged( city.toString(), stateInput.getText().toString() );
+            listener.locationChanged( cityInput.getText().toString(), stateInput.getText().toString() );
         }
     }
-
-    @OnTextChanged( R.id.stateInput )
-    void onStateChanged( CharSequence state )
-    {
-        if( listener != null )
-        {
-            listener.locationChanged( cityInput.getText().toString(), state.toString() );
-        }
-    }
+    
 }

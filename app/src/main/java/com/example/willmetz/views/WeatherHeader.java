@@ -18,10 +18,10 @@ import butterknife.OnTextChanged;
  */
 public class WeatherHeader extends RelativeLayout
 {
-    @Bind(R.id.cityInput)
+    @Bind(R.id.city_input)
     EditText cityInput;
 
-    @Bind(R.id.stateInput)
+    @Bind(R.id.state_input)
     EditText stateInput;
 
     protected WeatherSelectionInterface listener;
@@ -53,6 +53,7 @@ public class WeatherHeader extends RelativeLayout
     {
         inflate(getContext(), R.layout.weather_header_view, this);
         ButterKnife.bind(this);
+
     }
 
     @OnClick( R.id.get_forecast )
@@ -63,5 +64,5 @@ public class WeatherHeader extends RelativeLayout
             listener.locationChanged( cityInput.getText().toString(), stateInput.getText().toString() );
         }
     }
-    
+
 }

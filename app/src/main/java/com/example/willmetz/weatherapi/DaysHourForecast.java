@@ -1,5 +1,6 @@
-package com.example.willmetz.simpleweatherapp;
+package com.example.willmetz.weatherapi;
 
+import com.example.willmetz.weatherapi.HourForecast;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -10,5 +11,5 @@ import java.util.List;
 public class DaysHourForecast
 {
     @SerializedName("hourly_forecast")
-    List<HourForecast> hourlyForecast;
+    public List<HourForecast> hourlyForecast;
 }

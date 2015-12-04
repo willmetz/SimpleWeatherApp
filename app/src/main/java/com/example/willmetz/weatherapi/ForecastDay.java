@@ -1,4 +1,4 @@
-package com.example.willmetz.simpleweatherapp;
+package com.example.willmetz.weatherapi;
 
 /**
  * Created by willmetz on 11/25/15.

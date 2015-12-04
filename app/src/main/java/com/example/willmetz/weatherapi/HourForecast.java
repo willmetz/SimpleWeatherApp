@@ -1,4 +1,4 @@
-package com.example.willmetz.simpleweatherapp;
+package com.example.willmetz.weatherapi;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -10,8 +10,7 @@ public class HourForecast
     @SerializedName("month_name")
     public String month;
 
-    @SerializedName("civil")
-    public String time;
+
 
     @SerializedName("weekday_name")
     public String weekdayName;
@@ -27,6 +26,9 @@ public class HourForecast
 
     public String year;
 
+    @SerializedName( "FCTTIME" )
+    public FCTime forecastTime;
+
     public class Temperature
     {
         @SerializedName("english")
@@ -34,6 +36,14 @@ public class HourForecast
 
         @SerializedName("metric")
         public int celcius;
+    }
+
+    public class FCTime
+    {
+        @SerializedName("civil")
+        public String formatedTime;
+
+        public String hour;
     }
 
 }

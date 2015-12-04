@@ -48,7 +48,7 @@ public class WeatherListDayItem extends RelativeLayout
 
     public void setTemeratureFarenheit( int temperature )
     {
-        temperatureAtTime.setText( "%d F");
+        temperatureAtTime.setText( String.format( "%d F", temperature ));
     }
 
 

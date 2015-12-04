@@ -1,5 +1,7 @@
 package com.example.willmetz.simpleweatherapp;
 
+import com.example.willmetz.weatherapi.ForecastDay;
+
 import java.util.List;
 
 /**

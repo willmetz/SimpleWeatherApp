@@ -2,10 +2,10 @@ package com.example.willmetz.simpleweatherapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.example.willmetz.adapters.WeatherDetailsAdapter;
@@ -49,7 +49,7 @@ public class WeatherListActivity extends AppCompatActivity implements WeatherSel
 
         ButterKnife.bind( this );
 
-        weatherHeader.setListener( this );
+        weatherHeader.setListener(this);
     }
 
     @Override
@@ -77,12 +77,73 @@ public class WeatherListActivity extends AppCompatActivity implements WeatherSel
     @Override
     public void locationChanged(String city, String state)
     {
-        weatherDetails.showProgressBar();
+        hideKeyboard();
 
-        //clean the city up
-        city = city.replace( ' ', '_' );
+        String validCity = sanitizeCity(city);
 
-        weatherUndergroundService.getHourlyForecast( state, city, new HourlyWeatherCallback() );
+        String validState = sanitizeState(state);
+
+        if( validCity == null )
+        {
+            Toast.makeText( this, "Invalid city entered: " + city, Toast.LENGTH_SHORT ).show();
+        }
+        else if( validState == null )
+        {
+            Toast.makeText( this, "Invalid state entered: " + state, Toast.LENGTH_SHORT ).show();
+        }
+        else
+        {
+            weatherDetails.showProgressBar();
+            weatherUndergroundService.getHourlyForecast(state, city, new HourlyWeatherCallback() );
+        }
+    }
+
+    protected String sanitizeCity(String city)
+    {
+        if( city != null )
+        {
+            city = city.trim();
+
+            //clean the city up
+            city = city.replace( ' ', '_' );
+        }
+
+        return city;
+    }
+
+    protected String sanitizeState(String state)
+    {
+        if( state != null )
+        {
+            state = state.trim();
+
+            if( state.length() != 2 )
+            {
+                state = null;
+            }
+            else if( !state.matches( "^([a-zA-Z]*)$") )
+            {
+                state = null;
+            }
+
+        }
+
+        return state;
+    }
+
+    protected void hideKeyboard()
+    {
+        InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if(view == null)
+        {
+            view = new View( this );
+        }
+
+        imm.hideSoftInputFromWindow( view.getWindowToken(), 0);
     }
 
 
@@ -97,7 +158,7 @@ public class WeatherListActivity extends AppCompatActivity implements WeatherSel
 
                 if( daysHourForecast.hourlyForecast != null )
                 {
-                    weatherDetails.setListAdatper(new WeatherDetailsAdapter(daysHourForecast.hourlyForecast));
+                    weatherDetails.setListAdapter(new WeatherDetailsAdapter(daysHourForecast.hourlyForecast));
                 }
                 else
                 {

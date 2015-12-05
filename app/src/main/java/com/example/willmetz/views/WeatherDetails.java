@@ -60,7 +60,7 @@ public class WeatherDetails extends RelativeLayout
         progressBar.setVisibility( INVISIBLE );
     }
 
-    public void setListAdatper( WeatherDetailsAdapter adapter)
+    public void setListAdapter(WeatherDetailsAdapter adapter)
     {
         recyclerView.setAdapter( adapter );
     }

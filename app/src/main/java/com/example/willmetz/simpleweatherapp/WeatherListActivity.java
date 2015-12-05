@@ -24,10 +24,8 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class WeatherListActivity extends AppCompatActivity implements WeatherSelectionInterface
+public class WeatherListActivity extends BaseActivity implements WeatherSelectionInterface
 {
-
-    private ObjectGraph objectGraph;
     @Inject
     WeatherUndergroundService weatherUndergroundService;
 
@@ -43,9 +41,6 @@ public class WeatherListActivity extends AppCompatActivity implements WeatherSel
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_list);
-
-        objectGraph = ObjectGraph.create(new WeatherUndergroundAPI());
-        objectGraph.inject(this);
 
         ButterKnife.bind( this );
 
